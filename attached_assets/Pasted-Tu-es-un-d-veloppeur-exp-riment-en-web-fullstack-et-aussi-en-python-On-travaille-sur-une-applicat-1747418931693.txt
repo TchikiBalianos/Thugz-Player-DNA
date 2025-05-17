@@ -1,0 +1,123 @@
+Tu es un développeur expérimenté en web fullstack et aussi en python.
+On travaille sur une application qui permet d'afficher une sorte de dashboard à un joueur pour lui dresser son profil stéréotypé de joueur sous forme d'une carte ADN. 
+Pour établir son profil de joueur, on utilise un système de test de personnalité similaire à MBTI.
+
+On a un script python qui récupère des datas, notamment avec les achievements et le nombre d'achievements par jeu, d'un joueur Steam à partir de son steamid64. 
+Ce script va être hébergé sur un serveur Flask. On aura donc une récupération de datas JSON à prévoir dans le code pour l'instant en commentaires. pour une implémentation future de l'appel à notre endpoint sur le serveur Flask pour récupérer les JSONs.
+
+En attendant d'avoir notre url endpoint pour récupérer les datas, voici 3 exemples de JSON en pièce jointe que l'on aura à exploiter avec notre application web :
+- Les stats du joueur pour un id steam
+- Les achievements et stats classés par jeu pour ce joueur steam
+- Son profil PCSR généré pour afficher sa carte ADN
+Le but est que tu te bases sur la structure des datas de ces 3 JSONs pour faire évoluer notre base de code et afficher de manière cohérente les datas sur le dashboard.
+
+Voici,** à titre indicatif seulement pour te donner un contexte**, le brief qu'on a pour que tu comprennes mieux ce que l'on attend, mais tu es libre de proposer des modifications ou évolutions sans forcément suivre les directives de ce brief :
+
+"Objectif général : Créer un prototype React frontend fonctionnel du dashboard *Player DNA* basé sur les maquettes fournies.
+Le but est de rendre l’application visuellement crédible et interactive, pour pouvoir la présenter lors du pitch final du hackathon comme un MVP. 
+
+--- 
+
+Types de Composants & Sections imaginées à titre indicatif :
+Main Component : Dashboard Profile: 
+- Avatar + Archetype, 
+- Stats clés : Achievements, Time Played, Games Played, Rank,
+- Graphique horizontal de traits PCSR (comme sur le Player DNA),
+- Dernier jeu joué, genre préféré, recent achievement,
+- Score de Rareté, 
+- Badge 'Elite Gamer'
+
+Achievement Cards:
+- Section avec 6-8 achievements mockés,
+- Tags de rareté : Common, Rare, Epic, Legendary, 
+- Design sous forme de cartes,
+- Animation légère en hover, 
+
+Featured Achievements:
+- Grid simple,
+- Réutiliser des achievements récupérés,
+- Indicateur du % de joueurs ayant complété l’achievement,
+- Badge de type : Community Pick, Epic, etc., 
+
+Footer: 
+- Liens mockés (Twitter, Discord, YouTube, etc.),
+- Newsletter (champ mail inactif), 
+
+--- 
+
+Données exploitées :
+- % d’achievements complétés par jeu 
+- Type d’achievements (exploration, skill, coop, PvP...)
+- Nombre total de jeux joués
+- Temps joué, fréquence d'activité
+- Sans doute d’autres stats qu’on ajoutera : pour soit les display, soit les ajouter à l’algo PCSR
+
+Algorithme PCSR (Profil Comportemental)
+Axes (profils par axe)
+- P : Progression Style (Completionist / Freeflow) 
+- C : Challenge Nature (Story / Mechanical / Explorer)
+- S : Social Orientation (Teamplayer / Competitor / Lone Wolf) 
+- R : Rhythm & Engagement (High Intensity / Balanced / Drifter)"
+
+Nous avons donc une base, que j'aimerais que tu fasses évoluer en créant tous les fichiers et le code manquants.
+
+Voici un exemple d'architecture qu'on pourrait reprendre :
+"src/
+├── assets/
+│   └── images/
+│       ├── dna-background.png
+│       ├── achievements-icons/
+│       └── game-icons/
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── Layout.jsx
+│   ├── dashboard/
+│   │   ├── ProfileHeader.jsx
+│   │   ├── DnaCard.jsx
+│   │   ├── StatsOverview.jsx
+│   │   ├── AchievementsList.jsx
+│   │   ├── AchievementCard.jsx
+│   │   ├── GamesList.jsx
+│   │   └── GameCard.jsx
+│   └── ui/
+│       ├── ProgressBar.jsx
+│       ├── RarityBadge.jsx
+│       ├── PcsrAxis.jsx
+│       └── Button.jsx
+├── contexts/
+│   └── PlayerDataContext.jsx
+├── data/
+│   ├── mockData.js
+│   └── sampleData/
+│       ├── steam_player_stats.json
+│       ├── steam_achievements.json
+│       └── steam_pcsr_profile.json
+├── hooks/
+│   └── usePlayerData.js
+├── services/
+│   └── playerDataService.js
+├── styles/
+│   ├── global.css
+│   └── components/
+│       ├── DnaCard.module.css
+│       └── AchievementCard.module.css
+├── utils/
+│   ├── achievementUtils.js
+│   ├── pcsrUtils.js
+│   └── formatUtils.js
+├── App.jsx
+├── index.jsx
+└── pages/
+    ├── Dashboard.jsx
+    └── PlayerProfile.jsx"
+
+Voici le github du code source notre application actuelle : https://github.com/ThugzLabs/Achievements-ColosseumHackaton
+**Récupère tout notre code source comme base et fais évoluer le code.**
+
+Voici le front déployé pour faire office de dernière version de maquette design et te donner une idée de ce que l'on souhaite : 
+https://thugz-dna-player.vercel.app/
+
+
+**Crée tout le code manquant pour avoir une application déployée fonctionnelle à utiliser pour une démo lors d'un Hackathon.**

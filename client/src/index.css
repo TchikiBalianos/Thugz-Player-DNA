@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 267 71% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 163 94% 39%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 330 81% 60%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+
+  /* Chart colors */
+  --chart-1: 267 71% 50%;
+  --chart-2: 163 94% 39%;
+  --chart-3: 330 81% 60%;
+  --chart-4: 43 96% 50%;
+  --chart-5: 217 91% 60%;
+
+  /* Custom color vars for DNA Player dashboard */
+  --dark-bg-default: 0 0% 7%;
+  --dark-bg-lighter: 0 0% 12%;
+  --dark-bg-card: 222 26% 18%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 267 71% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 163 94% 39%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 330 81% 60%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[#121212] text-[#F9FAFB];
+  }
+
+  /* Font families */
+  .font-gaming {
+    font-family: 'Rajdhani', sans-serif;
+  }
+}
+
+@layer components {
+  .dna-bg {
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(109, 40, 217, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+  }
+
+  .dna-card {
+    background: linear-gradient(145deg, rgba(45, 55, 72, 0.8) 0%, rgba(26, 32, 44, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .dna-strand {
+    background: linear-gradient(90deg, 
+        rgba(16, 185, 129, 0.7) 0%, 
+        rgba(109, 40, 217, 0.7) 50%, 
+        rgba(236, 72, 153, 0.7) 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .achievement-card {
+    transition: all 0.3s ease;
+  }
+
+  .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(109, 40, 217, 0.4);
+  }
+
+  .badge-legendary {
+    background: linear-gradient(90deg, #FF8A00, #FF0080);
+  }
+  
+  .badge-epic {
+    background: linear-gradient(90deg, #8E33FF, #6D28D9);
+  }
+  
+  .badge-rare {
+    background: linear-gradient(90deg, #3B82F6, #10B981);
+  }
+  
+  .badge-common {
+    background: linear-gradient(90deg, #6B7280, #9CA3AF);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6D28D9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a1bb8;
+}

@@ -1,0 +1,135 @@
+// ----- Section 1: HeroSection -----
+import React from "react";
+
+export function HeroSection() {
+  return (
+    <section className="relative">
+      <div 
+        className="h-[300px] sm:h-[400px] bg-cover bg-center relative" 
+        style={{ 
+          backgroundImage: `url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=600')` 
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-[#171a21] via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-[#171a21] bg-opacity-60"></div>
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+              Suivez vos statistiques <span className="text-[#66c0f4]">Steam</span> en temps réel
+            </h1>
+            <p className="text-lg sm:text-xl text-[#c7d5e0] mb-8 max-w-2xl mx-auto drop-shadow-md">
+              Analysez votre bibliothèque de jeux, suivez votre temps de jeu et vos succès avec notre outil de suivi Steam avancé.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ----- Section 2: ProfileInput -----
+import { useState } from "react";
+// Supposons que ces composants UI existent
+const Button = ({ type, disabled, className, children }) => (
+  <button type={type} disabled={disabled} className={className}>{children}</button>
+);
+const Input = ({ value, onChange, placeholder, className }) => (
+  <input value={value} onChange={onChange} placeholder={placeholder} className={className} />
+);
+// Icône de recherche simplifiée
+const Search = ({ className }) => <span className={className}>🔍</span>;
+
+export function ProfileInput({ onSubmit, isLoading, result }) {
+  const [url, setUrl] = useState("");
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (url.trim()) {
+      onSubmit(url.trim());
+    }
+  };
+  
+  return (
+    <section className="w-full max-w-3xl mx-auto -mt-10 sm:-mt-16 px-4 relative z-10">
+      <div className="bg-[#1b2838] rounded-2xl shadow-xl p-6 sm:p-8 border border-[#2a475e]">
+        <h2 className="text-2xl font-bold mb-4 text-white text-center">
+          <i className="fas fa-user-circle text-[#66c0f4] mr-2"></i> Commencez le suivi
+        </h2>
+        <p className="text-center text-[#c7d5e0] mb-6">
+          Entrez votre URL de profil Steam pour commencer l'analyse
+        </p>
+        
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-4">
+          <div className="flex-grow relative">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <i className="fas fa-link text-gray-400"></i>
+            </div>
+            <Input 
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="https://steamcommunity.com/profiles/76561198000000000"
+              className="w-full pl-10 p-3.5 rounded-xl bg-[#171a21] border border-[#2a475e] text-[#c7d5e0] outline-none focus:ring-2 focus:ring-[#66c0f4] transition-all"
+            />
+          </div>
+          
+          <Button
+            type="submit"
+            disabled={isLoading || !url.trim()}
+            className="bg-[#66c0f4] hover:bg-blue-500 text-white px-6 py-3.5 rounded-xl font-semibold transition duration-300 flex items-center justify-center whitespace-nowrap h-[50px]"
+          >
+            {isLoading ? (
+              <div className="animate-spin h-5 w-5 border-2 border-white border-opacity-20 border-t-white rounded-full" />
+            ) : (
+              <>
+                <Search className="mr-2 h-5 w-5" /> Analyser
+              </>
+            )}
+          </Button>
+        </form>
+        
+        {result && (
+          <div 
+            className={`mt-4 px-4 py-3 rounded-lg ${
+              result.status === "success" 
+                ? "bg-[#5ba32b] bg-opacity-20 text-green-400" 
+                : "bg-[#d94c4c] bg-opacity-20 text-red-400"
+            }`}
+          >
+            {result.message}
+          </div>
+        )}
+        
+        <div className="mt-4 text-sm text-[#c7d5e0] text-center">
+          <p>Exemple d'URL valide: https://steamcommunity.com/profiles/76561198000000000</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ----- Section 3: Fonction d'extraction de l'ID Steam -----
+export async function extractSteamId(url) {
+  try {
+    // Essayez d'abord de faire une requête à l'API
+    const response = await fetch(`/api/extract-steamid?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+    
+    if (data && data.steamId) {
+      return data.steamId;
+    }
+    
+    // Fallback côté client si l'API échoue
+    // Recherche d'un ID dans l'URL comme 76561198000000000
+    const idRegex = /7656\d{13}/;
+    const match = url.match(idRegex);
+    
+    if (match) {
+      return match[0];
+    }
+    
+    return null;
+  } catch (error) {
+    console.error("Error extracting Steam ID:", error);
+    return null;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "CSTH",
+  "axes": {
+    "Progression Style": {
+      "code": "C",
+      "reason": "6 jeux avec >80% de succès.",
+      "score": 1.0
+    },
+    "Challenge Nature": {
+      "code": "S",
+      "reason": "Succès significatifs dans des jeux narratifs.",
+      "score": 0.6
+    },
+    "Social Orientation": {
+      "code": "T",
+      "reason": "Succès coop dans jeux multijoueur.",
+      "score": 0.7
+    },
+    "Rhythm / Engagement": {
+      "code": "H",
+      "reason": "7230.3h au total + succès réguliers sur 16 jeux.",
+      "score": 1.0
+    }
+  }
+}

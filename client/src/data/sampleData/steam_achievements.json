@@ -1,0 +1,54 @@
+{
+  "achievements": [
+    {
+      "id": "1",
+      "name": "Master Strategist",
+      "description": "Complete the game on the highest difficulty without dying",
+      "game": "Civilization VI",
+      "unlock_percentage": 0.5,
+      "rarity": "legendary",
+      "image_url": "https://via.placeholder.com/300x200"
+    },
+    {
+      "id": "2",
+      "name": "Global Champion",
+      "description": "Win 100 ranked matches in competitive mode",
+      "game": "Counter-Strike 2",
+      "unlock_percentage": 3.2,
+      "rarity": "epic",
+      "image_url": "https://via.placeholder.com/300x200"
+    },
+    {
+      "id": "3",
+      "name": "Explorer Extraordinaire",
+      "description": "Discover all hidden locations on the map",
+      "game": "The Witcher 3",
+      "unlock_percentage": 8.7,
+      "rarity": "rare",
+      "image_url": "https://via.placeholder.com/300x200"
+    }
+  ],
+  "games": [
+    {
+      "id": "1",
+      "name": "Counter-Strike 2",
+      "image_url": "https://via.placeholder.com/100x100",
+      "hours_played": 1243.5,
+      "achievement_percentage": 78
+    },
+    {
+      "id": "2",
+      "name": "Grand Theft Auto V",
+      "image_url": "https://via.placeholder.com/100x100",
+      "hours_played": 876.2,
+      "achievement_percentage": 92
+    },
+    {
+      "id": "3",
+      "name": "Apex Legends",
+      "image_url": "https://via.placeholder.com/100x100",
+      "hours_played": 654.0,
+      "achievement_percentage": 64
+    }
+  ]
+}

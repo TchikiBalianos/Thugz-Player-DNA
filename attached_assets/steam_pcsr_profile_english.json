@@ -1,0 +1,25 @@
+{
+  "type": "CSTH",
+  "axes": {
+    "Progression Style": {
+      "code": "C",
+      "reason": "6 games with >80% achievements completed.",
+      "score": 1.0
+    },
+    "Challenge Nature": {
+      "code": "S",
+      "reason": "Significant achievements in narrative games.",
+      "score": 0.6
+    },
+    "Social Orientation": {
+      "code": "T",
+      "reason": "Cooperative achievements in multiplayer games.",
+      "score": 0.7
+    },
+    "Rhythm / Engagement": {
+      "code": "H",
+      "reason": "7230.3h total playtime + regular achievements across 16 games.",
+      "score": 1.0
+    }
+  }
+}
